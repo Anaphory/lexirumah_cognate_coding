@@ -1,0 +1,57 @@
+\documentclass{scrartcl}
+
+\usepackage{biblatex}
+\usepackage{cleveref}
+
+\title{Quality of cognate coding methods}
+\author{Gereon A. Kaiping}
+\date{\today}
+
+\begin{document}
+\maketitle
+\begin{abstract}
+    In this article, I compare freely-available methods for automatic cognate coding on the LexiRumah database using pairs of forms selected using different methods and judged by experts on whether they are cognate or not.
+\end{abstract}
+
+
+\section{Introduction}
+Automatic cognate methods \parencite{lexstat,onlinepmi} have become more and more refined over recent years, possibly good enough to be used in phylogenetic inference procedures \parencite{rama2018are}. When applying these methods to a new dataset, however, it is unclear what parameter values (thresholds, graph clustering algorithms, sound class models etc.) would deliver the best results. In this article, I present an initial dataset of form pairs from Timor-Alor-Pantar (TAP) languages and neighbouring Austronesian (AN) languages, from the Lesser Sunda islands in Indonesia and Timor-Leste, which have been assessed for cognacy by experts in the field. The dataset consists of three collections selected using different methods and annotated by a total of 5 different historical linguists. I will first present the dataset and then analyze the performance of several freely available cognate coding algorithms on the dataset. The algorithms under consideration are LexStat \parencite{lexstat} with different sound class models and different clustering algorithms, OnlinePMI \parencite{onlinepmi}, and SVM \parencite{jager2016automatic,jager2017using}.
+
+\section{Data and Methods}
+I use forms from the LexiRumah database \parencite{lexirumah1}. The forms in the database were automatically cognate-coded using the LexStat algorithm \parencite{lexstat,lexirumahpaper}, but even a very rough inspection revealed significant flaws in the postulated cognate classes.
+
+\subsection{Cognate Data}
+The target data is composed of three different subgroups, each selected for different reasons and coded by a different group of linguists.
+
+\paragraph{Near-Threshold Pairs}
+The first subgroup consists of pairs with LexStat edit distances near the clustering threshold.
+All forms in LexiRumah were cognate-coded using LexStat, with the parameters described in the accompanying article \parencite{lexirumahpaper}.
+11 lects
+(alor1247-pandai,
+abui1241-takal,
+adan1251-otvai,
+alor1247-besar,
+alor1247-pandai,
+kaer1234,
+kelo1247-bring,
+koto1251,
+lama1277-kalik,
+pura1258,
+sika1262-tanai)
+were selected based on the higher familiarity of at least one collaborator with the lect.
+The cognate-coded data was reduced to the pairs involving only these lects. I then selected 27 pairs each that were marked as “cognate”, but had a large LexStat distance, and that were marked as “non-cognate”, but with a low LexStat distance, for a total of 54 pairs of forms. Pairs were chosen such that each concept would appear at most once.
+Three collaborators, specialists on the historical linguistics of TAP or AN languages of the region, were independently asked to each code each pair, assigning a score between $1$ (“definitely cognate”) and $-1$ (“definitely not cognate”).
+
+Specialists disagreed on about 30\% (16/54) of the resulting pairwise codings. Pairs with disagreement were removed from the dataset. The complete list of pairs and annotations can be found in \cref{nearthreshold}.
+
+\paragraph{Oddities}
+A second section of 28 pairs was compiled by the author from observations made by himself or colleagues in the process of manually counting borrowed forms, in particular loans between the AN language Alorese and neighbouring TAP languages. In most cases, these pairs constitute false positives, which were assigned to the same cognate class by the cognate coding algorithm due to partial superficial similarity, but for which no reason to assume cognacy exists.
+
+\paragraph{TAP pairs}
+In order to systematically improve the quality of automatic cognate codes in the database, in particular concerning the under-studied TAP languages for which no external etymologies are available, we selected a regular subsample of 32 concepts of various lexical stability. A historical linguist with no particular background in TAP languages then assessed the quality of automatic cognate clusters in the data.
+
+From the apparent mono-morphemic outlier cases in the data (i.\,e. pairs that are apparently cognates, but not recognised as such by the algorithm; or pairs that are apparent non-cognates, but are grouped together; supplemented by a small number of forms where the algorithm groups extreme pairs exactly as intended) I generated 18 test pairs. Both the general assessment of the clustering quality and the pairs extracted from this assessment can be found in \cref{tap}.
+
+\subsection{Cognate Coding Algorithms}
+
+\end{document}
